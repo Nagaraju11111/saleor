@@ -1,0 +1,19 @@
+---
+  trigger: 
+    - main
+  pool: 
+    vmImage: ubuntu-20.04
+  stages:
+    - stage: build
+      jobs:
+        - job:
+          steps:
+            - task: Docker@2 
+              inputs:
+                command: 'buildAndPush'
+                Dockerfile: '**/Dockerfile'
+                tags: |
+                  9052171017/storefront:2.0
+                containerRegistry: Dockerhub  
+        
+  
